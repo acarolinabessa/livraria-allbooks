@@ -1,0 +1,33 @@
+{% extends 'base-adm.html' %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>{{ editora.nome }}</h1>
+    <table class="table table-hover">  
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CNPJ</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ editora.id }}</th>
+                <td scope="row">{{ editora.nome }}</td>  
+                <td scope="row">{{ editora.CNPJ }}</td>
+                <td scope="row">{{ editora.endereco }}</td>
+                <td scope="row">{{ editora.cidade }}</td>
+                <td scope="row">{{ editora.estado }}</td>
+                <td scope="row">{{ editora.telefone }}</td>  
+                <td scope="row">{{ editora.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
