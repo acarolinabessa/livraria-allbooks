@@ -1,0 +1,31 @@
+{% extends 'base-adm.html' %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>{{ autor.nome }}</h1>
+    <table class="table table-hover">  
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">País</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">E-mail</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ autor.id }}</th>
+                <td scope="row">{{ autor.nome }}</td>  
+                <td scope="row">{{ autor.pais }}</td>
+                <td scope="row">{{ autor.cidade }}</td>
+                <td scope="row">{{ autor.estado }}</td>
+                <td scope="row">{{ autor.telefone }}</td>
+                <td scope="row">{{ autor.email }}</td>  
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

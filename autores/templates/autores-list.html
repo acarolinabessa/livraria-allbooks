@@ -1,0 +1,51 @@
+{% extends 'base-adm.html' %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Lista de Autores</h1>
+    <a id="add-link" href="autor-new">
+        <div class="col-2 add-div">
+            <i class="fas fa-plus"></i> Adicionar autor(a)
+        </div>
+    </a>
+    <div class="search-adm">
+        <form method="GET" id="search-form">
+            <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome dos autores para buscar..." value="{{ request.GET.search }}">
+            <i class="fas fa-search" id="search-btn"></i>
+        </form>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <ul class="item-list">
+        {% for autor in autores %}
+            <li class="each-item done">
+                <span><a href="autor-detail/{{autor.id}}">{{autor.nome}}</a></span>
+                <a href="autor-delete/{{autor.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+                <a href="autor-update/{{autor.id}}"><span><i class="fas fa-edit"></i></span></a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if autores.has_previous %}
+                <a href="?page={{ autores.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+            
+            {% if autores.paginator.num_pages %}
+            <span class="current">
+                {{ autores.number }} de {{ autores.paginator.num_pages }}
+            </span>
+            {% endif %}
+        
+            {% if autores.has_next %}
+                <a href="?page={{ autores.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}
