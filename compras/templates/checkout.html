@@ -98,23 +98,25 @@
             <div class="row">
               <div class="col-md-5 mb-3">
                 <label for="country">País</label>
-                <select class="custom-select d-block w-100" id="country" required>
+                {{ form.pais|as_crispy_field }}
+                <!-- <select class="custom-select d-block w-100" id="country" required>
                   <option value="">Escolha...</option>
                   <option>Brasil</option>
-                </select>
-                <div class="invalid-feedback">
+                </select> -->
+                <!-- <div class="invalid-feedback">
                   Por favor selecione um País válido
-                </div>
+                </div> -->
               </div>
               <div class="col-md-4 mb-3">
                 <label for="state">Estado</label>
-                <select class="custom-select d-block w-100" id="state" required>
+                {{ form.estado|as_crispy_field }}
+                <!-- <select class="custom-select d-block w-100" id="state" required>
                   <option value="">Escolha...</option>
                   <option>São Luís</option>
                 </select>
                 <div class="invalid-feedback">
                   Por favor selecione um Estado válido
-                </div>
+                </div> -->
               </div>
               <div class="col-md-3 mb-3">
                 <label for="CEP">CEP</label>
@@ -170,7 +172,7 @@
               </div>
             </div>
             <hr class="mb-4">
-            {% if quantidade_de_itens == NULL %}
+            {% if quantidade_de_itens == 0 %}
             <div class="text-center">
               Adicione livros ao carrinho para comprar
             </div>

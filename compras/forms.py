@@ -6,7 +6,7 @@ class CompraForm(forms.ModelForm):
 
     class Meta:
         model = Compra
-        fields = ['nome_do_cliente', 'sobrenome_do_cliente', 'usuario', 'email', 'endereco', 'segundo_endereco', 'CEP', 'nome_no_cartao', 'numero_do_cartao', 'validade_do_cartao', 'cvv']
+        fields = ['nome_do_cliente', 'sobrenome_do_cliente', 'usuario', 'email', 'endereco', 'segundo_endereco', 'CEP', 'estado', 'pais', 'nome_no_cartao', 'numero_do_cartao', 'validade_do_cartao', 'cvv']
         widgets = {
             'nome_do_cliente': forms.TextInput(attrs={'placeholder': 'Primeiro nome'}),
             'sobrenome_do_cliente': forms.TextInput(attrs={'placeholder': 'Último nome'}),

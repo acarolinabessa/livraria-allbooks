@@ -7,10 +7,6 @@ from operator import attrgetter
 
 from .models import Livro
 from .forms import LivroForm
-from compras.forms import CompraForm
-from compras.models import models
-
-livros_no_carrinho = []
 
 def exibir_livros_principais(request):
     livros = Livro.objects.all()
@@ -58,10 +54,13 @@ def exibir_livros(request):
 
 def exibir_carrinho(request):
     livros = Livro.objects.all()
-    return render(request, 'checkout.html', {'livros': livros})
+    return render(request, 'checkout.html', {'livros': livros})    
+
+livros_no_carrinho = []
 
 def comprar_livros(request, id):
     livro = Livro.objects.get(pk=id)
+
     livros_no_carrinho.append(livro)
     quantidade_de_itens = 0
     valor_total = 0
@@ -75,8 +74,22 @@ def comprar_livros(request, id):
         'valor_total': valor_total, 
         'quantidade_de_itens': quantidade_de_itens
         })
+
+def carrinho(request, id):
+    quantidade_de_itens = 0
+    valor_total = 0
     
-    
+    for livro in livros_no_carrinho:
+        valor_total += livro.valor
+        quantidade_de_itens += 1
+
+    context = {
+        'livros': livros_no_carrinho, 
+        'valor_total': valor_total, 
+        'quantidade_de_itens': quantidade_de_itens
+    }
+
+    return context
    
 @login_required
 def listar_livros(request):
