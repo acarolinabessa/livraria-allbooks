@@ -60,8 +60,11 @@ livros_no_carrinho = []
 
 def comprar_livros(request, id):
     livro = Livro.objects.get(pk=id)
+    livro.quantidade_em_estoque = livro.quantidade_em_estoque - 1
 
     livros_no_carrinho.append(livro)
+    
+
     quantidade_de_itens = 0
     valor_total = 0
     
