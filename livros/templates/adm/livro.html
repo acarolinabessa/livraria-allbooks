@@ -23,9 +23,13 @@
         <tbody>
             <tr>
                 <th scope="row">{{ livro.id }}</th>
-                <td scope="row">{{ livro.autor }}</td>  
+                {% for autor_desse_livro in livro.autor.all %}
+                <td scope="row">{{ autor_desse_livro.nome }}</td>  
+                {% endfor %}
                 <td scope="row">{{ livro.categoria }}</td>
-                <td scope="row">{{ livro.editora }}</th>
+                {% for editora_desse_livro in livro.editora.all %}
+                <td scope="row">{{ editora_desse_livro.nome }}</td>
+                {% endfor %}
                 <td scope="row">{{ livro.edicao }}</td>
                 <td scope="row">{{ livro.traducao }}</td>
                 <td scope="row">{{ livro.IBSN }}</td>  
