@@ -1,0 +1,160 @@
+/* RESET */
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: arial;
+  box-sizing: border-box;
+
+  background-color: #efefef;
+}
+
+/* Global */
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Logo */
+.logo {
+  margin-right: 1rem;
+}
+
+.logo-principal img {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+/* Header classes */
+.header-logo {
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.carrosel-livros {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Livros classes */
+
+.livros-container {
+  margin: 0 4rem;
+  background-color: whitesmoke;
+  padding-top: 2rem;
+}
+
+.livro {
+  display: flex;
+  width: 140px;
+  height: 180px;
+  background-color: rgb(100, 100, 100);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.livro-carrinho {
+  display: flex;
+  width: 140px;
+  height: 180px;
+  margin: 10px 0px auto 10px;
+  background-color: rgb(100, 100, 100);
+}
+
+.livro-div {
+  text-align: center;
+  /* overflow-x: hidden; */
+}
+
+.livro-div h4 {
+  margin-top: 1rem;
+}
+
+.lista-horizontal ul {
+  display: flex;
+  gap: 40px;
+  max-width: 60ch;
+
+  padding-right: 65%;
+}
+
+.lista-horizontal ul li {
+  list-style-type: none;
+  /* padding-right: 30px; */
+}
+
+.lista-horizontal {
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn-icon {
+  padding: 18px 22px 18px 22px;
+  background-color: #ffc107;
+  border-radius: 100px;
+  color: black;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.btn-volta {
+  padding: 5px 12px;
+  color: white;
+  border-radius: 100px;
+  position: absolute;
+  top: 15px;
+  left: 100px;
+}
+
+.bi-cart-fill {
+  font-size: 20px;
+}
+
+.bi-arrow-left-short {
+  font-size: 30px;
+}
+
+.titulo-carrinho {
+  display: block;
+  margin: 0px 0px 0px 0px;
+  text-align: center;
+}
+
+.titulo-livro-carrinho {
+  text-align: left;
+  font-size: 45px;
+  margin-top: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.descricao-livro-carrinho {
+  text-align: left;
+  font-size: 20px;
+}
+
+.btn-finaliza-compra {
+  display: block;
+  color: black;
+  background-color: #ffc107;
+  padding: 5px;
+}
+
+.alinha-esquerda {
+  margin-left: 610px;
+}
+
+#populares h3,
+#novidades h3 {
+  margin: 1rem 0 2rem 4rem;
+}
