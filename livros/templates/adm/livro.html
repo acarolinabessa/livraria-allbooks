@@ -1,0 +1,41 @@
+{% extends 'base-adm.html' %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>{{ livro.titulo }}</h1>
+    <table class="table table-hover">  
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Editora</th>
+            <th scope="col">Edição</th>
+            <th scope="col">Tradução</th>
+            <th scope="col">IBSN</th>
+            <th scope="col">N° Páginas</th>
+            <th scope="col">Q. Estoque</th>
+            <th scope="col">Impressão</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Desconto</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ livro.id }}</th>
+                <td scope="row">{{ livro.autor }}</td>  
+                <td scope="row">{{ livro.categoria }}</td>
+                <td scope="row">{{ livro.editora }}</th>
+                <td scope="row">{{ livro.edicao }}</td>
+                <td scope="row">{{ livro.traducao }}</td>
+                <td scope="row">{{ livro.IBSN }}</td>  
+                <td scope="row">{{ livro.numero_de_paginas }}</td>   
+                <td scope="row">{{ livro.quantidade_em_estoque }}</td>
+                <td scope="row">{{ livro.data_de_impressao }}</td>
+                <td scope="row">R${{ livro.valor }}</td> 
+                <td scope="row">R${{ livro.desconto }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

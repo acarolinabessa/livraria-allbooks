@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/"><img src="{% static 'imagens/allbookslogo.svg' %}" alt="logo" class="logo" width="150px"></a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-white">Home</a></li>
+                    <li><a href="/livro/all" class="nav-link px-2 text-white">Todos os produtos</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Product section-->
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6">{{livro.imagem}}</div>
+                <div class="col-md-6">
+                    <div class="small mb-1">IBSN: {{livro.IBSN}}</div>
+                    <h1 class="display-5 fw-bolder">{{livro.titulo}}</h1>
+                    <div class="fs-5 mb-5">
+                        <span class="text-decoration-line-through">
+                            R${{livro.valor}}
+                        </span>
+                    </div>
+                    <p class="lead">{{livro.descricao}}</p>
+                    <div class="d-flex">
+                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                        <!-- <a id="add-link" href="/checkout"> -->
+                            <a href="{% url 'comprar_livros' livro.id %}">
+                                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                                    <i class="bi-cart-fill me-1"></i>Adicionar ao carrinho
+                                </button>
+                            </a>
+                        <!-- </a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Botão carrinho de compras -->
+    <div>
+        <a href="/checkout" class="bi-cart-fill img-circle btn-primary btn-icon"></a>
+    </div>
+{% endblock %}

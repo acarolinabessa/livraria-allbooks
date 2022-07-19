@@ -1,0 +1,62 @@
+{% extends 'base-adm.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="offset-1 col-10 list-div">
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <h1>Cadastrar/Editar livro</h1>
+        <div class="row">
+            <div class="col-6">
+                {{ form.titulo|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.autor|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.categoria|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.editora|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.edicao|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.IBSN|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.numero_de_paginas|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.quantidade_em_estoque|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ form.data_de_impressao|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.traducao|as_crispy_field }}
+            </div>
+        </div>
+        {{ form.descricao|as_crispy_field }}
+        <div class="row">
+            <div class="col-6">
+                {{ form.valor|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.desconto|as_crispy_field }}
+            </div>
+        </div>
+        {{ form.imagem|as_crispy_field }}
+        <button type="submit" class="btn btn-success">Salvar</button>
+    </form>
+</div>
+{% endblock %}
