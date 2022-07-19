@@ -5,18 +5,18 @@
 <div class="offset-1 col-10 list-div">
     <form method="post" novalidate>
         {% csrf_token %}
-        <h1>Cadastrar/Editar livro</h1>
+        <h1>Editar livro</h1>
         <div class="row">
             <div class="col-6">
                 {{ form.titulo|as_crispy_field }}
             </div>
             <div class="col-6">
-                {{ form.autor|as_crispy_field }}
+                {{ form.categoria|as_crispy_field }}
             </div>
         </div>
         <div class="row">
             <div class="col-6">
-                {{ form.categoria|as_crispy_field }}
+                {{ form.autor|as_crispy_field }}
             </div>
             <div class="col-6">
                 {{ form.editora|as_crispy_field }}
@@ -46,7 +46,9 @@
                 {{ form.traducao|as_crispy_field }}
             </div>
         </div>
-        {{ form.descricao|as_crispy_field }}
+        <div class="col-12">
+            {{ form.descricao|as_crispy_field }}
+        </div>
         <div class="row">
             <div class="col-6">
                 {{ form.valor|as_crispy_field }}
