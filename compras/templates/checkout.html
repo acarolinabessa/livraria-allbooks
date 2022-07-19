@@ -1,0 +1,208 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Livraria Allbooks</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/form-validation.css' %}" rel="stylesheet">
+  </head>
+  {% block content %}
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <a href="/"><img class="d-block mx-auto mb-4" src="{% static 'imagens/allbookslogo-principal.svg' %}" alt="logo" width="300px"></a>
+        <h2>Finalização da Compra</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Seu carrinho</span>
+            <span class="badge badge-secondary badge-pill">{{ quantidade_de_itens }}</span>
+          </h4>
+          <ul class="list-group mb-3">
+            {% for livro in livros %}
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <small><h6 class="my-0">{{ livro.titulo }}</h6></small>
+                <small class="text-muted">IBSN: {{ livro.IBSN }}</small>
+              </div>
+              <span class="text-muted">{{ livro.valor }}</span>
+            </li>
+            {% endfor %}
+            <!-- <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Promo code</h6>
+                <small>EXAMPLECODE</small>
+              </div>
+              <span class="text-success">-$5</span>
+            </li> -->
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (BRL)</span>
+              <strong>R${{ valor_total }}</strong>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="col-md-8 order-md-1">
+          <h4 class="mb-3">Endereço de Cobrança</h4>
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nome_do_cliente">Nome</label>
+                {{ form.nome_do_cliente|as_crispy_field }}
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="sobrenome_do_cliente">Sobrenome</label>
+                {{ form.sobrenome_do_cliente|as_crispy_field }}
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="usuario">Usuário</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+              </div>
+              {{ form.usuario|as_crispy_field }}
+            </div>
+
+            <div class="mb-3">
+              <label for="email">E-mail <span class="text-muted">(Opcional)</span></label>
+                {{ form.email|as_crispy_field }}
+            </div>
+
+            <div class="mb-3">
+              <label for="endereco">Endereço</label>
+              {{ form.endereco|as_crispy_field }}
+            </div>
+
+            <div class="mb-3">
+              <label for="segundo_endereco">Outro Endereço<span class="text-muted">(Opcional)</span></label>
+              {{ form.segundo_endereco|as_crispy_field }}
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">País</label>
+                <select class="custom-select d-block w-100" id="country" required>
+                  <option value="">Escolha...</option>
+                  <option>Brasil</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor selecione um País válido
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">Estado</label>
+                <select class="custom-select d-block w-100" id="state" required>
+                  <option value="">Escolha...</option>
+                  <option>São Luís</option>
+                </select>
+                <div class="invalid-feedback">
+                  Por favor selecione um Estado válido
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="CEP">CEP</label>
+                {{ form.CEP|as_crispy_field }}
+              </div>
+            </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="same-address">
+              <label class="custom-control-label" for="same-address">O endereço de entrega é o mesmo que meu endereço de cobrança</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Salve esta informação para a próxima vez</label>
+            </div>
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Pagamento</h4>
+
+            <div class="d-block my-3">
+              <div class="custom-control custom-radio">
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="credit">Cartão de Crédito</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="debit">Cartão de Débito</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="paypal">PIX</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nome_no_cartao">Nome no cartão</label>
+                {{ form.nome_no_cartao|as_crispy_field }}
+                <small class="text-muted">Nome completo conforme exibido no cartão</small>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="numero_do_cartao">Número do cartão</label>
+                {{ form.numero_do_cartao|as_crispy_field }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="validade_do_cartao">Data de validade</label>
+                {{ form.validade_do_cartao|as_crispy_field }}
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cvv">CVV</label>
+                {{ form.cvv|as_crispy_field }}
+              </div>
+            </div>
+            <hr class="mb-4">
+            {% if quantidade_de_itens == NULL %}
+            <div class="text-center">
+              Adicione livros ao carrinho para comprar
+            </div>
+            {% else %}
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Finalizar</button>
+            {% endif %}     
+          </form>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 Livraria AllBooks</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacidade</a></li>
+          <li class="list-inline-item"><a href="#">Termos</a></li>
+          <li class="list-inline-item"><a href="#">Suporte</a></li>
+        </ul>
+      </footer>
+    </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script scr="{% static "jquery-slim.min.js" %}"><\/script>')</script>
+    <script scr="{% static 'js/popper.min.js' %}"></script>
+    <script scr="{% static 'js/bootstrap.min.js' %}"></script>
+    <script scr="{% static 'js/holder.min.js' %}"></script>
+    <script>
+    </script>
+  </body>
+  {% endblock %}
+</html>
