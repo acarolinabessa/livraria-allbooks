@@ -23,24 +23,33 @@
   </header>
   <div class="livros-container">
     <!-- <div class="owl-carousel owl-theme"> -->
-    <div class="livro-div">
-      <div class="lista-horizontal">
-        <ul>
+      <ul class="list-group mb-3">
           {% for livro in livros %}
           {% if livro.quantidade_em_estoque != 0 %}
-          <li>
-            <a href="/livro/{{livro.id}}">
-              <div class="livro">
-                {{ livro.imagem }}
+          <li class="list-group-item py-3">
+            <div class="row g-3">
+              <div class="col-4 col-md-3 col-lg-2">
+                <a href="/livro/{{livro.id}}">
+                  <div class="livro-carrinho">
+                    <p></p>
+                  </div>
+                </a>
               </div>
-            </a>
-            <span><a href="/livro/{{livro.id}}">
-                <h4>{{ livro.titulo }}</h4>
-              </a></span>
-            <p>R${{ livro.valor }}</p>
-            <a href="{% url 'comprar_livros' livro.id %}">
-              <button type="submit" class="btn btn-success">COMPRAR</button>
-            </a>
+              <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left aling-self-center">
+              <a href="/livro/{{livro.id}}">
+                <h4 class="titulo-livro-carrinho">{{ livro.titulo }}</h4>
+              </a>
+              <p class="descricao-livro-carrinho">{{ livro.descricao }}</p>
+              </div>
+              <div class="text-right mt-2">
+                  <span class="text-dark">Valor: <span>R$ {{ livro.valor }}</span> </span>
+              </div>
+              <div class="text-left col-md-1">
+                <a href="{% url 'comprar_livros' livro.id %}">
+                  <button type="submit" class="btn btn-success">COMPRAR</button>
+                </a>
+              </div>
+              
           </li>
           {% endif %}
           {% endfor %}
