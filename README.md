@@ -28,5 +28,5 @@ python manage.py runserver
 ## Instalação via Docker
 ```bash
 # Inicie o compose
-docker-compose up
+docker-compose up -d
 ```
