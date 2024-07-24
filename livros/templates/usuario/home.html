@@ -9,10 +9,10 @@
           <a href="/"><img src="{% static 'imagens/allbookslogo.svg' %}" alt="logo" class="logo" width="150px"></a>
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-            <li><a href="livro/all" class="nav-link px-2 text-white">Todos os produtos</a></li>
+            <li><a href="/" class="nav-link text-secondary">Home</a></li>
+            <li><a href="livro/all" class="nav-link text-white">Todos os produtos</a></li>
             {% if user.is_authenticated %}
-            <li><a href="livro-list" class="nav-link px-2 text-white">Área do ADM</a></li>
+            <li><a href="livro-list" class="nav-link text-white">Área do ADM</a></li>
             {% else %}
             <li><a href="/accounts/login" class="nav-link px-2 text-white">Área do ADM</a></li>
             {% endif %}

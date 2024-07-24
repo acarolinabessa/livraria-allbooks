@@ -1,9 +1,28 @@
-.container-fluid {
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat:wght@400;600&display=swap');
+
+:root {
+  --cor-primaria: #000000;
+  --cor-secundaria: #F6F6F6;
+  --cor-terciaria: #22D4FD;
+  --cor-hover: #272727;
+
+  --fonte-primaria: 'Krona One', sans-serif;
+  --fonte-secundaria: 'Montserrat', sans-serif;
+}
+
+*{
+  margin: 0;
   padding: 0;
 }
 
+.container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .container-fluid .row {
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 /* Navbar */
@@ -24,6 +43,8 @@
 .navbar-light .navbar-nav a.nav-link {
   color: #333;
   letter-spacing: 1px;
+  font-family: var(--fonte-secundaria);
+  text-decoration: none;
 }
 
 /* dashboard */

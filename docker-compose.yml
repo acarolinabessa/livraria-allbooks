@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    command: python manage.py runserver 8000 --noreload
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    container_name: livraria-allbooks
+    environment:
+      - DJANGO_SETTINGS_MODULE=allbooks.settings
